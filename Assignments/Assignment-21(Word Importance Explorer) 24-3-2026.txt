@@ -1,0 +1,81 @@
+
+Assignment Name :Word Importance Explorer
+Aim:
+Use TF-IDF on 5 documents and identify top keywords with explanation.
+Objective:
+To use TF-IDF (Term Frequency–Inverse Document Frequency) to identify the most important words (keywords) from a set of documents.
+Dataset (5 Documents):
+1."Machine learning is used for data analysis and prediction"
+2."Artificial intelligence and machine learning are closely related fields"
+3."Data science includes machine learning and data visualization"
+4."Deep learning is a subset of machine learning in artificial intelligence"
+5."Data analysis and visualization are important in data science"
+
+Python Program:
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Documents
+documents = [
+    "Machine learning is used for data analysis and prediction",
+    "Artificial intelligence and machine learning are closely related fields",
+    "Data science includes machine learning and data visualization",
+    "Deep learning is a subset of machine learning in artificial intelligence",
+    "Data analysis and visualization are important in data science"
+]
+
+# TF-IDF Vectorizer
+vectorizer = TfidfVectorizer(stop_words='english')
+
+# Transform documents
+tfidf_matrix = vectorizer.fit_transform(documents)
+
+# Get feature names
+feature_names = vectorizer.get_feature_names_out()
+
+# Convert to array
+dense = tfidf_matrix.toarray()
+
+# Display top keywords for each document
+for i, doc in enumerate(dense):
+    print(f"\nDocument {i+1} Top Keywords:")
+    sorted_words = sorted(zip(feature_names, doc), key=lambda x: x[1], reverse=True)
+    for word, score in sorted_words[:5]:
+        print(word, round(score, 3))
+
+Sample Output (Top Keywords):-
+
+Document 1:
+prediction
+analysis
+data
+learning
+machine
+
+Document 2:
+artificial
+intelligence
+related
+fields
+machine
+
+Document 3:
+science
+visualization
+includes
+data
+learning
+
+Document 4:
+deep
+subset
+artificial
+intelligence
+learning
+
+Document 5:
+visualization
+science
+important
+analysis
+data

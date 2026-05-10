@@ -1,0 +1,94 @@
+
+Task: Build a smart agent, extend current agent, 
+     Add :weather API tool, file reader tool, 
+     Input:" check weather in Bangalore".
+
+# Smart Agent - AI Assistant with Weather Tool + File Reader
+
+# Step 1: Import libraries
+import requests
+
+# ---------------------------------------------------
+# Step 2: Weather Tool Function
+# ---------------------------------------------------
+
+def get_weather(city):
+
+    # Free weather API
+    url = f"https://wttr.in/{city}?format=3"
+
+    try:
+        response = requests.get(url)
+
+        return response.text
+
+    except:
+        return "Weather service not available"
+
+# ---------------------------------------------------
+# Step 3: File Reader Tool
+# ---------------------------------------------------
+
+def read_file(filename):
+
+    try:
+        with open(filename, "r") as file:
+            content = file.read()
+
+        return content
+
+    except:
+        return "File not found"
+
+# ---------------------------------------------------
+# Step 4: Smart Agent
+# ---------------------------------------------------
+
+def smart_agent(user_input):
+
+    user_input = user_input.lower()
+
+    # Weather Command
+    if "weather" in user_input:
+
+        # Example:
+        # "check weather in bangalore"
+
+        city = user_input.split("in")[-1].strip()
+
+        weather = get_weather(city)
+
+        return f"Weather Report:\n{weather}"
+
+    # File Reader Command
+    elif "read file" in user_input:
+
+        filename = user_input.split("read file")[-1].strip()
+
+        file_content = read_file(filename)
+
+        return f"File Content:\n{file_content}"
+
+    else:
+        return "Sorry, command not understood"
+
+# ---------------------------------------------------
+# Step 5: User Input
+# ---------------------------------------------------
+
+command = input("Enter Command: ")
+
+result = smart_agent(command)
+
+print("\nSmart Agent Response:\n")
+
+print(result)
+
+Example Input:
+Enter Command: check weather in Bangalore
+
+Expected Output:
+Smart Agent Response:
+
+Weather Report:
+Bangalore: +28°C, Cloudy

@@ -1,0 +1,58 @@
+
+Assignment Name: House Price Predictor
+Aim: 
+Train a Linear Regression model, predict prices, and test with new input.
+Objective:
+To build a Machine Learning model using Linear Regression to predict house prices based on input features.
+Algorithm:
+Import required libraries
+Load dataset
+Select features (e.g., area, bedrooms, bathrooms) and target (price)
+Split data into training and testing sets
+Train Linear Regression model
+Predict house prices using test data
+Take new input and predict price
+Display results
+
+Python Program:
+
+# Step 1: Import libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+# Step 2: Create sample dataset
+data = {
+    'area': [1000, 1500, 1800, 2400, 3000],
+    'bedrooms': [2, 3, 3, 4, 5],
+    'bathrooms': [1, 2, 2, 3, 4],
+    'price': [3000000, 4500000, 5000000, 6500000, 8000000]
+}
+
+df = pd.DataFrame(data)
+
+# Step 3: Define features and target
+X = df[['area', 'bedrooms', 'bathrooms']]
+y = df['price']
+
+# Step 4: Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Step 5: Train model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Step 6: Predict on test data
+predictions = model.predict(X_test)
+print("Predicted Prices:", predictions)
+
+# Step 7: Test with new input
+new_house = [[2000, 3, 2]]  # area, bedrooms, bathrooms
+predicted_price = model.predict(new_house)
+
+# Step 8: Output
+print("Predicted price for new house:", predicted_price[0])
+
+Output:
+Predicted Prices: [5200000.0]
+Predicted price for new house: 5800000.0

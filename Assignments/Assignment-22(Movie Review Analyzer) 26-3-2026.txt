@@ -1,0 +1,57 @@
+
+Assignment Name : Movie Review Analyzer
+Aim: 
+Build a simple sentiment analyzer and test on 5 reviews.
+Objective:
+To build a simple sentiment analyzer that classifies movie reviews as Positive or Negative using basic NLP techniques.
+
+Python Program:
+
+import string
+
+# Sample positive and negative word lists
+positive_words = ["good", "great", "excellent", "amazing", "love", "awesome", "fantastic"]
+negative_words = ["bad", "worst", "boring", "poor", "hate", "terrible", "awful"]
+
+# Function to clean text
+def clean_text(text):
+    text = text.lower()
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    return text
+
+# Function to analyze sentiment
+def analyze_sentiment(review):
+    review = clean_text(review)
+    words = review.split()
+    
+    pos_count = sum(1 for word in words if word in positive_words)
+    neg_count = sum(1 for word in words if word in negative_words)
+    
+    if pos_count > neg_count:
+        return "Positive"
+    elif neg_count > pos_count:
+        return "Negative"
+    else:
+        return "Neutral"
+
+# Test on 5 reviews
+reviews = [
+    "The movie was amazing and fantastic!",
+    "It was the worst film I have ever seen",
+    "The story was good but a bit boring",
+    "I love the acting but the plot was poor",
+    "An awesome experience, really great movie"
+]
+
+# Output results
+for i, review in enumerate(reviews, 1):
+    sentiment = analyze_sentiment(review)
+    print(f"Review {i}: {review}")
+    print(f"Sentiment: {sentiment}\n")
+
+Sample Output:
+Review 1: Positive  
+Review 2: Negative  
+Review 3: Neutral  
+Review 4: Neutral  
+Review 5: Positive  

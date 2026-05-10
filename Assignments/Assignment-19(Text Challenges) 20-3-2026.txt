@@ -1,0 +1,40 @@
+
+Assignment Name: Text Challenges
+Aim:
+Collect 20 messy sentences and identify slang, emojis, typos; explain preprocessing needed.
+Objective:
+To analyze messy text data by identifying slang, emojis, and typos, and to understand preprocessing techniques used in NLP.
+Description:
+In real-world applications, text data is often unstructured and contains noise such as abbreviations, spelling mistakes, emojis, and repeated characters. This assignment focuses on identifying such issues and applying preprocessing techniques to clean the data.
+Examples of Messy Sentences and Analysis:
+1.I luv this movie 😍 → slang, emoji → love, remove emoji
+2.wat r u doing?? → slang → what are you doing
+3.This is gr8!!! → slang → great
+4.LOL that was funny 😂😂 → slang, emoji → expand + remove emoji
+5.I cant beleive this → typo → can't believe
+6.gonna go now brb → slang → going to, be right back
+7.OMG!!! this is amazng → slang + typo → amazing
+8.u r the best ❤️ → slang → you are
+9.heyyy whats up??? → repetition → hey, what’s up
+10.I h8 waiting → slang → hate
+11.gud mrng everyone → typo → good morning
+12.idk what to do → slang → I don’t know
+13.Thnx for ur help 🙏 → slang → thanks, your
+14.soooo tired rn → repetition → so, right now
+15.pls send the doc asap → slang → please, as soon as possible
+16.dis is not fair → typo → this
+17.wht happened here → typo → what
+18.hahaha thats funnyyy → repetition → funny
+19.bcoz I said so → slang → because
+20.meet me @ 5pm → symbol → at
+
+Preprocessing Techniques:
+Lowercasing
+Slang Expansion
+Spell Correction
+Emoji Removal/Conversion
+Removing Special Characters
+Tokenization
+Normalizing Repeated Letters
+Stopword Removal
+Stemming/Lemmatization

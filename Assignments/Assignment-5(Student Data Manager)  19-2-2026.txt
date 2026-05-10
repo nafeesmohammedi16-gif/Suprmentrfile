@@ -1,0 +1,96 @@
+
+Assignment Name: Student Data Manager
+Aim: 
+Store data for 5 students using dictionaries, print topper, class average, and assign grades.
+Objective:
+To manage student records using dictionaries and compute topper, class average, and grades.
+Algorithm:
+Start the program
+Create an empty list to store student dictionaries
+Repeat 5 times:
+ Take student name and marks as input
+ Store them in a dictionary
+ Add dictionary to list
+Initialize variables:
+ total = 0
+ topper_marks = 0
+ topper_name = ""
+Loop through student list:
+ Add marks to total
+ Check if marks are highest → update topper
+ Assign grade based on marks
+Calculate average = total / 5
+Print topper name
+Print class average
+Print grades of all students
+End
+Python Program:
+
+# Student Data Manager
+
+students = []
+
+# Taking input for 5 students
+for i in range(5):
+    name = input("Enter student name: ")
+    marks = int(input("Enter marks: "))
+    
+    student = {
+        "name": name,
+        "marks": marks
+    }
+    
+    students.append(student)
+
+total = 0
+topper_marks = 0
+topper_name = ""
+
+print("\n--- Student Grades ---")
+
+for student in students:
+    total += student["marks"]
+    
+    # Check topper
+    if student["marks"] > topper_marks:
+        topper_marks = student["marks"]
+        topper_name = student["name"]
+    
+    # Assign Grade
+    if student["marks"] >= 90:
+        grade = "A"
+    elif student["marks"] >= 75:
+        grade = "B"
+    elif student["marks"] >= 60:
+        grade = "C"
+    else:
+        grade = "D"
+    
+    print(student["name"], ":", grade)
+
+average = total / 5
+
+print("\nTopper:", topper_name)
+print("Class Average:", average)
+
+Output:
+Enter student name: Ali
+Enter marks: 85
+Enter student name: Sara
+Enter marks: 92
+Enter student name: Honey
+Enter marks: 74
+Enter student name: Aisha
+Enter marks: 66
+Enter student name: Haniya
+Enter marks: 58
+
+--- Student Grades ---
+Ali : B
+Sara : A
+Honey : C
+Aisha : C
+Haniya : D
+
+Topper: Sara
+Class Average: 75.0

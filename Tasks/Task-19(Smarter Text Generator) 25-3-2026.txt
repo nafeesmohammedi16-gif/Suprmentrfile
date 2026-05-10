@@ -1,0 +1,95 @@
+
+Task:Build a smarter text generator, improve mini-LLM,
+   Add :sentence input from user, better prediction logic, generate 10-word sentences.
+
+# Smarter Mini Text Generator
+
+# Step 1: Import libraries
+import random
+from collections import defaultdict
+
+# ---------------------------------------------------
+# Step 2: Training Text
+# ---------------------------------------------------
+
+text = """
+artificial intelligence is changing the world
+machine learning helps computers learn from data
+deep learning improves prediction accuracy
+natural language processing helps machines understand text
+python is popular for machine learning
+data science uses statistics and programming
+students enjoy learning artificial intelligence
+technology creates many opportunities for innovation
+"""
+
+# ---------------------------------------------------
+# Step 3: Convert text into words
+# ---------------------------------------------------
+
+words = text.lower().split()
+
+# ---------------------------------------------------
+# Step 4: Build Prediction Dictionary
+# ---------------------------------------------------
+
+# Using 2-word context for smarter prediction
+model = defaultdict(list)
+
+for i in range(len(words) - 2):
+    
+    key = (words[i], words[i + 1])
+    
+    next_word = words[i + 2]
+    
+    model[key].append(next_word)
+
+# ---------------------------------------------------
+# Step 5: User Input
+# ---------------------------------------------------
+
+user_input = input("Enter starting sentence (2 words): ").lower()
+
+input_words = user_input.split()
+
+# Check minimum 2 words
+if len(input_words) < 2:
+    print("Please enter at least 2 words")
+
+else:
+
+    generated = input_words.copy()
+
+    # ---------------------------------------------------
+    # Step 6: Generate 10-word sentence
+    # ---------------------------------------------------
+
+    while len(generated) < 10:
+
+        key = (generated[-2], generated[-1])
+
+        # If key exists
+        if key in model:
+
+            next_word = random.choice(model[key])
+
+            generated.append(next_word)
+
+        else:
+            break
+
+    # ---------------------------------------------------
+    # Step 7: Print Generated Sentence
+    # ---------------------------------------------------
+
+    print("\nGenerated Sentence:\n")
+
+    print(" ".join(generated))
+
+Example Input:
+Enter starting sentence (2 words): machine learning
+
+Expected Output:
+Generated Sentence:
+
+machine learning helps computers learn from data science uses statistics

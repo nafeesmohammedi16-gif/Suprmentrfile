@@ -1,0 +1,111 @@
+
+Task: Sentiment vectorization, 
+      data set: I love this movie, 
+                this movie is terrible, 
+                amazing acting, 
+                worst film ever. 
+      Student must apply: bag of words, 
+                          apply TF-IDF, 
+                          print matrices, 
+                          compare results, 
+      extra: visualize using pandas data frame.
+
+# Sentiment Vectorization using Bag of Words and TF-IDF
+
+# Step 1: Import libraries
+import pandas as pd
+
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Step 2: Create dataset
+
+documents = [
+    "I love this movie",
+    "this movie is terrible",
+    "amazing acting",
+    "worst film ever"
+]
+
+print("Original Dataset:\n")
+
+for doc in documents:
+    print(doc)
+
+# ---------------------------------------------------
+# Step 3: Bag of Words
+# ---------------------------------------------------
+
+bow_vectorizer = CountVectorizer()
+
+bow_matrix = bow_vectorizer.fit_transform(documents)
+
+# Convert to DataFrame for visualization
+bow_df = pd.DataFrame(
+    bow_matrix.toarray(),
+    columns=bow_vectorizer.get_feature_names_out()
+)
+
+print("\nBag of Words Matrix:\n")
+print(bow_df)
+
+# ---------------------------------------------------
+# Step 4: TF-IDF
+# ---------------------------------------------------
+
+tfidf_vectorizer = TfidfVectorizer()
+
+tfidf_matrix = tfidf_vectorizer.fit_transform(documents)
+
+# Convert to DataFrame
+tfidf_df = pd.DataFrame(
+    tfidf_matrix.toarray(),
+    columns=tfidf_vectorizer.get_feature_names_out()
+)
+
+print("\nTF-IDF Matrix:\n")
+print(tfidf_df)
+
+# ---------------------------------------------------
+# Step 5: Compare Results
+# ---------------------------------------------------
+
+print("\nComparison:")
+
+print("""
+1. Bag of Words:
+   - Counts word frequency.
+   - Simple and easy.
+   - Does not consider word importance.
+
+2. TF-IDF:
+   - Gives importance to unique words.
+   - Reduces importance of common words.
+   - Better for NLP and sentiment analysis.
+""")
+
+Output:
+Original Dataset:
+
+I love this movie
+this movie is terrible
+amazing acting
+worst film ever
+
+
+Bag of Words Matrix:
+
+   acting  amazing  ever  film  is  love  movie  terrible  this  worst
+0       0        0     0     0   0     1      1         0     1      0
+1       0        0     0     0   1     0      1         1     1      0
+2       1        1     0     0   0     0      0         0     0      0
+3       0        0     1     1   0     0      0         0     0      1
+
+
+TF-IDF Matrix:
+
+     acting   amazing      ever      film        is      love     movie  terrible      this     worst
+0  0.000000  0.000000  0.000000  0.000000  0.000000  0.617614  0.486934  0.000000  0.617614  0.000000
+1  0.000000  0.000000  0.000000  0.000000  0.617614  0.000000  0.486934  0.617614  0.486934  0.000000
+2  0.707107  0.707107  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+3  0.000000  0.000000  0.577350  0.577350  0.000000  0.000000  0.000000  0.000000  0.000000  0.577350

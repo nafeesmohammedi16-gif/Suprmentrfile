@@ -1,0 +1,24 @@
+
+ Task: Write a code to print your name,fav food,dream company
+
+ # Print personal detail
+
+ name = input("Enter your name: ")
+ favorite_food = input("Enter your favorite food: ")
+ dream_company = input("Enter your dream company: ")
+
+ print("\n--- Personal Details ---")
+ print("Name:", name)
+ print("Favorite Food:", favorite_food)
+ print("Dream Company:", dream_company)
+
+ Output:
+ Enter your name: Nafees
+ Enter your favorite food: biryani
+ Enter your dream company: Google
+
+ --- Personal Details ---
+ Name: Nafees
+ Favorite Food: Biryani
+ Dream Company: Google
+

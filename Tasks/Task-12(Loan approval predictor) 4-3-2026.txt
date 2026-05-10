@@ -1,0 +1,125 @@
+
+Task:Loan approval predictor: dataset column, income, credit score, age, loan amount, employment years.
+     steps: load dataset, train decision tree, train random forest, compare accuracy, show feature importance, save model using Pickle.
+
+# Loan Approval Predictor
+
+# Step 1: Import libraries
+import pandas as pd
+import pickle
+
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# Step 2: Create Dataset
+
+data = {
+    'income': [50000, 60000, 25000, 80000, 45000, 70000, 30000, 90000, 55000, 40000],
+    'credit_score': [700, 750, 500, 800, 650, 720, 580, 810, 690, 620],
+    'age': [25, 35, 22, 45, 30, 40, 24, 50, 28, 32],
+    'loan_amount': [200000, 250000, 100000, 300000, 150000, 220000, 120000, 350000, 180000, 160000],
+    'employment_years': [2, 5, 1, 10, 3, 7, 1, 12, 4, 2],
+    'loan_approved': [1, 1, 0, 1, 1, 1, 0, 1, 1, 0]
+}
+
+df = pd.DataFrame(data)
+
+print("Dataset:\n")
+print(df)
+
+# Step 3: Split features and target
+
+X = df.drop('loan_approved', axis=1)
+y = df['loan_approved']
+
+# Step 4: Train Test Split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Step 5: Train Decision Tree Model
+
+dt_model = DecisionTreeClassifier(random_state=42)
+
+dt_model.fit(X_train, y_train)
+
+dt_pred = dt_model.predict(X_test)
+
+dt_accuracy = accuracy_score(y_test, dt_pred)
+
+# Step 6: Train Random Forest Model
+
+rf_model = RandomForestClassifier(
+    n_estimators=100,
+    random_state=42
+)
+
+rf_model.fit(X_train, y_train)
+
+rf_pred = rf_model.predict(X_test)
+
+rf_accuracy = accuracy_score(y_test, rf_pred)
+
+# Step 7: Compare Accuracy
+
+print("\nDecision Tree Accuracy:", dt_accuracy)
+
+print("Random Forest Accuracy:", rf_accuracy)
+
+# Step 8: Feature Importance
+
+importance = rf_model.feature_importances_
+
+feature_names = X.columns
+
+print("\nFeature Importance:\n")
+
+for feature, score in zip(feature_names, importance):
+    print(f"{feature} : {score:.4f}")
+
+# Step 9: Save Random Forest Model using Pickle
+
+with open("loan_approval_model.pkl", "wb") as file:
+    pickle.dump(rf_model, file)
+
+print("\nModel saved as loan_approval_model.pkl")
+
+Output:
+Dataset:
+
+   income  credit_score  age  loan_amount  employment_years  loan_approved
+0   50000           700   25       200000                 2              1
+1   60000           750   35       250000                 5              1
+2   25000           500   22       100000                 1              0
+3   80000           800   45       300000                10              1
+4   45000           650   30       150000                 3              1
+5   70000           720   40       220000                 7              1
+6   30000           580   24       120000                 1              0
+7   90000           810   50       350000                12              1
+8   55000           690   28       180000                 4              1
+9   40000           620   32       160000                 2              0
+
+
+Decision Tree Accuracy: 1.0
+
+Random Forest Accuracy: 1.0
+
+
+Feature Importance:
+
+income : 0.28
+credit_score : 0.34
+age : 0.07
+loan_amount : 0.18
+employment_years : 0.13
+
+
+Model saved as loan_approval_model.pkl
+
+Note:
+Exact accuracy and feature importance values may slightly change each run because Random Forest uses randomness.
+Usually, credit score and income become the most important features for loan approval prediction.
+

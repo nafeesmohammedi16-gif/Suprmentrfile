@@ -1,0 +1,52 @@
+
+Task: Create line plot for revenue trend, create scatter plot between marketing and profit, create correlation map, write insight from your graphs.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create dataset
+data = {
+    "Month": ["Jan", "Feb", "Mar", "Apr", "May"],
+    "Revenue": [50000, 55000, 60000, 65000, 70000],
+    "Marketing": [10000, 12000, 15000, 17000, 20000],
+    "Profit": [8000, 10000, 12000, 15000, 18000]
+}
+
+df = pd.DataFrame(data)
+
+# Line Plot for Revenue Trend
+plt.figure(figsize=(6,4))
+plt.plot(df["Month"], df["Revenue"], marker='o')
+plt.title("Revenue Trend")
+plt.xlabel("Month")
+plt.ylabel("Revenue")
+plt.show()
+
+# Scatter Plot between Marketing and Profit
+plt.figure(figsize=(6,4))
+plt.scatter(df["Marketing"], df["Profit"])
+plt.title("Marketing vs Profit")
+plt.xlabel("Marketing")
+plt.ylabel("Profit")
+plt.show()
+
+# Correlation Heatmap
+plt.figure(figsize=(6,4))
+sns.heatmap(df[["Revenue", "Marketing", "Profit"]].corr(),
+            annot=True, cmap="coolwarm")
+plt.title("Correlation Heatmap")
+plt.show()
+
+# Insights
+print("Insights:")
+print("1. Revenue is increasing every month.")
+print("2. Higher marketing spending leads to higher profit.")
+print("3. Revenue, Marketing, and Profit are strongly positively correlated.")
+
+Output:
+Insights:
+1. Revenue is increasing every month.
+2. Higher marketing spending leads to higher profit.
+3. Revenue, Marketing, and Profit are strongly positively correlated.
+

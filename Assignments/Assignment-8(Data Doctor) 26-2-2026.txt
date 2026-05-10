@@ -1,0 +1,70 @@
+
+Assignment Name: Data Doctor
+Aim: 
+Clean a dataset by handling missing values, removing duplicates, standardizing text, and explain why cleaning matters.
+Objective:
+To perform data preprocessing techniques to improve data quality before analysis or model building.
+Algorithm:
+Start the program
+Import pandas library
+Load the dataset
+Check for missing values
+Remove duplicate records
+Standardize text (convert to lowercase, remove spaces)
+Display cleaned dataset
+Stop
+Python Program:
+
+import pandas as pd
+
+# Create sample dataset
+data = {
+    "Name": ["Nafees", "sara", "Ali", "Sara", "John", "Ali"],
+    "City": ["Delhi", "Mumbai", np.nan, "mumbai", "Delhi", "Delhi"],
+    "Marks": [85, 90, 78, 90, np.nan, 85]
+}
+
+df = pd.DataFrame(data)
+
+print("Original Dataset:")
+print(df)
+
+# 1. Handling Missing Values
+df["Marks"].fillna(df["Marks"].mean(), inplace=True)
+df["City"].fillna(df["City"].mode()[0], inplace=True)
+
+# 2. Removing Duplicates
+df.drop_duplicates(inplace=True)
+
+# 3. Standardizing Text
+df["Name"] = df["Name"].str.lower().str.strip()
+df["City"] = df["City"].str.lower().str.strip()
+
+print("\nCleaned Data:")
+print(df)
+
+Output:
+
+Original Data:
+    Name    City  Marks
+0  Nafees   Delhi   85.0
+1    sara  Mumbai   90.0
+2     Ali     NaN   78.0
+3    Sara  mumbai   90.0
+4    John   Delhi    NaN
+5     Ali   Delhi   85.0
+
+After Cleaning:
+    Name    City      Marks
+0  nafees   delhi   85.00
+1    sara  mumbai   90.00
+2     ali  delhi   78.00
+3    sara  mumbai   90.00
+4    john  delhi   85.60
+5     ali  delhi   85.00
+
+Data Cleaning Matters:
+1.Improves accuracy of models
+2.Reduces errors and bias
+3.Makes data consistent and reliable
+4.Helps in better decision-making

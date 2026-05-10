@@ -1,0 +1,35 @@
+
+Assignment Name: Decision Tree on Paper
+Aim:
+Draw a decision tree predicting whether you should play outside.
+Objective:
+To understand how a Decision Tree algorithm works by creating a simple model to predict whether we should play outside or not based on conditions like weather.
+Example Conditions:
+We consider three factors:
+
+Weather (Sunny / Rainy / Cloudy)
+Temperature (Hot / Mild / Cool)
+Wind (Strong / Weak)
+
+Target output: Play Outside? (Yes / No)
+
+Decision Tree Diagram (Concept):
+
+                Weather
+              /    |    \
+           Sunny  Rainy  Cloudy
+            |       |       |
+         Humidity  Wind    Yes
+          /   \     /  \
+       High  Normal Strong Weak
+        |       |     |      |
+       No      Yes    No     Yes
+Explanation:
+First check the weather condition.
+If weather is Cloudy → Play = Yes.
+If weather is Sunny → Check Humidity.
+High → No
+Normal → Yes
+If weather is Rainy → Check Wind.
+Strong → No
+Weak → Yes

@@ -1,0 +1,78 @@
+
+Task: Image editor tool,
+      Build an app that :loads images, converts to grayscale, applies blur, shows edges.
+
+# Image Editor Tool using OpenCV
+
+# Step 1: Import libraries
+import cv2
+import matplotlib.pyplot as plt
+
+# Step 2: Load Image
+
+# Replace with your image path
+image = cv2.imread("sample.jpg")
+
+# Check if image loaded
+if image is None:
+    print("Image not found")
+
+else:
+
+    # Convert BGR to RGB
+    image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+    # ---------------------------------------------------
+    # Step 3: Convert to Grayscale
+    # ---------------------------------------------------
+
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Step 4: Apply Blur
+    blur = cv2.GaussianBlur(gray, (7, 7), 0)
+
+    # Step 5: Edge Detection
+
+
+    edges = cv2.Canny(blur, 100, 200)
+
+    # Step 6: Display Results
+
+    plt.figure(figsize=(12, 8))
+
+    # Original Image
+    plt.subplot(2, 2, 1)
+    plt.imshow(image_rgb)
+    plt.title("Original Image")
+    plt.axis("off")
+
+    # Grayscale Image
+    plt.subplot(2, 2, 2)
+    plt.imshow(gray, cmap='gray')
+    plt.title("Grayscale Image")
+    plt.axis("off")
+
+    # Blurred Image
+    plt.subplot(2, 2, 3)
+    plt.imshow(blur, cmap='gray')
+    plt.title("Blurred Image")
+    plt.axis("off")
+
+    # Edge Detection
+    plt.subplot(2, 2, 4)
+    plt.imshow(edges, cmap='gray')
+    plt.title("Edge Detection")
+    plt.axis("off")
+
+    plt.tight_layout()
+    plt.show()
+
+Example Workflow:
+
+Original Image
+      ↓
+Grayscale
+      ↓
+Blur
+      ↓
+Edge Detection

@@ -1,0 +1,61 @@
+
+Task: build a text preprocessing tool, create a program that: input:"I am learning NLP and it is very exciting,"
+     The program should convert to lowercase, remove punctuation, tokenize text, remove stopwords, apply stemming.
+     Output example:[ 'learn',' NLP ',excit']
+
+# Text Preprocessing Tool
+
+# Step 1: Import libraries
+import string
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+
+import nltk
+
+# Download required files
+nltk.download('punkt')
+nltk.download('stopwords')
+
+# Step 2: Input text
+text = "I am learning NLP and it is very exciting."
+
+print("Original Text:")
+print(text)
+
+# Step 3: Convert to lowercase
+text = text.lower()
+
+# Step 4: Remove punctuation
+text = text.translate(str.maketrans('', '', string.punctuation))
+
+# Step 5: Tokenization
+tokens = word_tokenize(text)
+
+# Step 6: Remove stopwords
+stop_words = set(stopwords.words('english'))
+
+filtered_words = []
+
+for word in tokens:
+    if word not in stop_words:
+        filtered_words.append(word)
+
+# Step 7: Apply stemming
+stemmer = PorterStemmer()
+
+stemmed_words = []
+
+for word in filtered_words:
+    stemmed_words.append(stemmer.stem(word))
+
+# Step 8: Final Output
+print("\nProcessed Output:")
+print(stemmed_words)
+
+Output:
+Original Text:
+I am learning NLP and it is very exciting.
+
+Processed Output:
+['learn', 'nlp', 'excit']

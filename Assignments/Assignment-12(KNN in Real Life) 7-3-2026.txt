@@ -1,0 +1,55 @@
+
+Assignment Name: KNN in Real Life
+Aim: 
+Explain Netflix-like recommendations using KNN and create a small similarity example.
+Objective:
+To understand how the K-Nearest Neighbors (KNN) algorithm can be used in real-life recommendation systems like Netflix and to demonstrate a small similarity example.
+
+Real-Life Example: Netflix Recommendation:-
+Platforms like Netflix recommend movies or shows based on similar users or similar content.
+
+How KNN Works in Netflix-like Recommendations:
+Collect user data (movies watched, ratings).
+Represent each user as a feature vector.
+Calculate similarity or distance between users.
+Find K nearest users (most similar).
+Recommend movies liked by those similar users.
+
+Example:
+If User A likes action and sci-fi movies, the system finds users with similar preferences and recommends movies they enjoyed.
+
+Small Similarity Example:
+Suppose we have movie ratings from users.
+ User    Action Movie   Comedy Movie 
+
+ User A   5              1            
+ User B   4              1            
+ User C   1              5            
+ User D   2              4            
+
+Step 1: Identify Target User:
+User A wants recommendations.
+
+Step 2: Calculate Similarity (Distance):
+Using Euclidean Distance:
+
+Distance between A and B
+= √((5−4)² + (1−1)²)
+= √(1)
+= 1
+
+Distance between A and C
+= √((5−1)² + (1−5)²)
+= √(16 + 16)
+= 5.65
+
+Distance between A and D
+= √((5−2)² + (1−4)²)
+= √(9 + 9)
+= 4.24
+
+Step 3: Find Nearest Neighbor:
+Nearest user to User A is User B.
+
+Step 4: Recommendation:
+Movies liked by User B are recommended to User A.

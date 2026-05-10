@@ -1,0 +1,78 @@
+
+Assignment Name: NLP Mini App
+Aim: 
+Build a chatbot, fake news detector, or keyword extractor.
+
+Description:
+In this assignment, a mini NLP (Natural Language Processing) application is developed.
+The project can be one of the following: a chatbot, fake news detector, or keyword extractor. 
+The application uses basic NLP techniques such as text preprocessing, tokenization, and vectorization to process and analyze text data. The goal is to demonstrate how machines can understand and respond to human language.
+
+Option Chosen: (Example – Chatbot)
+Objective:
+To build a simple chatbot that can respond to user queries based on predefined rules or simple logic.
+
+Steps Involved:
+Collect sample questions and answers
+Clean and preprocess text (lowercase, remove punctuation)
+Tokenize sentences into words
+Match user input with stored data
+Generate appropriate response
+
+Output:
+The chatbot responds to basic user queries like greetings, questions, and simple conversations.
+
+Python Program:
+
+import random
+import string
+
+# Predefined responses
+responses = {
+    "hello": ["Hi there!", "Hello!", "Hey!"],
+    "how are you": ["I'm fine!", "Doing great!", "All good!"],
+    "what is your name": ["I'm a chatbot!", "You can call me NLP Bot."],
+    "bye": ["Goodbye!", "See you later!", "Bye!"]
+}
+
+# Function to clean text
+def preprocess(text):
+    text = text.lower()
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    return text
+
+# Chatbot function
+def chatbot():
+    print("Chatbot: Hello! Type 'bye' to exit.")
+    
+    while True:
+        user_input = input("You: ")
+        cleaned_input = preprocess(user_input)
+        
+        found = False
+        
+        for key in responses:
+            if key in cleaned_input:
+                print("Chatbot:", random.choice(responses[key]))
+                found = True
+                break
+        
+        if not found:
+            print("Chatbot: Sorry, I don't understand.")
+        
+        if "bye" in cleaned_input:
+            break
+
+# Run chatbot
+chatbot()
+
+Output:
+Chatbot: Hello! Type 'bye' to exit.
+You: hello
+Chatbot: Hey!
+
+You: how are you
+Chatbot: I'm fine!
+
+You: bye
+Chatbot: Goodbye!

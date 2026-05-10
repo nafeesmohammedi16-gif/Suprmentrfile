@@ -1,0 +1,55 @@
+
+Assignment Name: Dataset Detective
+Aim: 
+Load a dataset, display top rows, find highest value column, count missing values, share 5 insights.
+Objective:
+To load a dataset, display top rows, find the column with highest value, count missing values, and extract meaningful insights.
+Algorithm:
+Start the program
+Import pandas libraries
+Load the dataset
+Display first 5 rows using head()
+Find highest value in numerical columns
+Count missing values using isnull().sum()
+Print insights
+Stop
+
+Python Program:
+
+import pandas as pd
+
+# Step 1: Load dataset (example: CSV file)
+df = pd.read_csv("sample_data.csv")
+
+# Step 2: Display top 5 rows
+print("Top 5 Rows:")
+print(df.head())
+
+# Step 3: Find column with highest value
+max_values = df.max(numeric_only=True)
+highest_column = max_values.idxmax()
+
+print("\nColumn with Highest Maximum Value:", highest_column)
+print("Highest Value:", max_values[highest_column])
+
+# Step 4: Count missing values
+print("\nMissing Values in Each Column:")
+print(df.isnull().sum())
+
+Output:
+
+Top 5 Rows:
+   Age  Salary  Experience
+0   22   25000          1
+1   25   30000          2
+2   30   40000          5
+3   28   35000          4
+4   35   50000          8
+
+Column with Highest Maximum Value: Salary
+Highest Value: 50000
+
+Missing Values:
+Age           0
+Salary        1
+Experience    0

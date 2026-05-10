@@ -1,0 +1,49 @@
+
+Assignment Name: Image as Numbers
+Aim: 
+Load an image, print shape, pixel values, channels, and explain them.
+Objective:
+To understand how an image is represented as numerical data by analyzing its shape, pixel values, and channels.
+
+Python Program:
+
+import cv2
+import numpy as np
+
+# Load image
+image = cv2.imread('sample.jpg')  # replace with your image path
+
+# Print shape of image
+print("Shape of image:", image.shape)
+
+# Print pixel values (first 5x5 pixels)
+print("\nPixel values (first 5x5 region):")
+print(image[0:5, 0:5])
+
+# Print number of channels
+if len(image.shape) == 3:
+    print("\nNumber of channels:", image.shape[2])
+else:
+    print("\nThis is a grayscale image with 1 channel")
+
+Explanation:
+
+1.Shape of Image:
+Output looks like: (height, width, channels)
+Example: (300, 400, 3)
+300 → height (rows)
+400 → width (columns)
+3 → color channels (RGB/BGR)
+
+2.Pixel Values:
+Each pixel is a number (or set of numbers).
+Example pixel: [255, 0, 0]
+Represents color intensity.
+Range: 0 to 255
+0 → dark
+255 → bright
+
+3.Channels:
+3 channels → Color image (Blue, Green, Red in OpenCV)
+1 channel → Grayscale image
+Channels represent color layers of the image

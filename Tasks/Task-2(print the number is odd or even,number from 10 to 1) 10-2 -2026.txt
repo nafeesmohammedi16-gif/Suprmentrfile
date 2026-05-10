@@ -1,0 +1,52 @@
+
+ Task: 1.print the number is odd or even
+       2.print number from 10 to 1 
+       3.sum until users stops: keep asking the user to enter number and calculate the sum stop only when the user enter 0
+
+ 1. Check whether number is Odd or Even:
+num = int(input("Enter a number: "))
+
+if num % 2 == 0:
+    print("Even Number")
+else:
+    print("Odd Number")
+
+Output:
+Enter a number: 7
+Odd Number
+
+2. Print numbers from 10 to 1:
+for i in range(10, 0, -1):
+    print(i)
+
+Output:
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+3. Sum until user stops (enter 0 to stop):
+total = 0
+
+while True:
+    num = int(input("Enter a number (0 to stop): "))
+
+    if num == 0:
+        break
+
+    total = total + num
+
+print("Total Sum =", total)
+
+Output:
+Enter a number (0 to stop): 5
+Enter a number (0 to stop): 10
+Enter a number (0 to stop): 3
+Enter a number (0 to stop): 0
+Total Sum = 18

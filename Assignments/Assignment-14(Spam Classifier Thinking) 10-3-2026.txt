@@ -1,0 +1,46 @@
+
+Assignment Name: Spam Classifier Thinking
+Aim:
+Design a spam detection system: features, data needed, possible mistakes.
+Objective:
+To design a system that can identify whether a message or email is spam or not spam using machine learning concepts.
+
+Features Used for Spam Detection:
+The system may use the following features:
+
+Number of links in the message
+Presence of suspicious words like free, win, offer, lottery
+Message length
+Use of capital letters
+Sender email address
+Special characters such as !, $, %
+
+Data Required:
+To train the system we need a dataset containing messages labeled as Spam or Not Spam.
+Example dataset:
+ Message                         Label    
+  
+ Win a free iPhone now           Spam     
+ Meeting at 5 pm today           Not Spam 
+ Limited time offer              Spam     
+ Assignment submission tomorrow  Not Spam 
+
+Algorithm:
+Collect a dataset of messages.
+Label the messages as Spam or Not Spam.
+Extract important features such as keywords, links, and message length.
+Train a machine learning model (Naive Bayes, Logistic Regression, etc.).
+When a new message arrives, extract its features.
+The trained model predicts whether the message is Spam or Not Spam.
+
+Possible Errors in Spam Detection:
+False Positive:-
+A normal message is incorrectly classified as spam.
+Example:
+“Your bank account update”
+
+False Negative:-
+A spam message is classified as normal.
+Example:
+“Congratulations! Claim your free reward”
+

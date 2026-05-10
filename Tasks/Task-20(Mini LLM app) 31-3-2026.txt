@@ -1,0 +1,64 @@
+
+Task:Mini LLM app,
+     Build:"AI study assistant", 
+     features: user enters topic, API returns explanation.
+
+# Mini LLM App - AI Study Assistant
+
+# Step 1: Create knowledge base
+
+study_data = {
+
+    "python":
+    "Python is a high-level programming language used for web development, AI, data science, and automation.",
+
+    "machine learning":
+    "Machine Learning is a branch of AI where computers learn patterns from data and make predictions.",
+
+    "artificial intelligence":
+    "Artificial Intelligence enables machines to mimic human intelligence and decision-making.",
+
+    "database":
+    "A database is an organized collection of data stored electronically for easy access and management.",
+
+    "networking":
+    "Networking connects computers and devices to share data and resources.",
+
+    "nlp":
+    "Natural Language Processing helps computers understand and process human language.",
+
+    "cybersecurity":
+    "Cybersecurity protects systems, networks, and data from digital attacks.",
+
+    "cloud computing":
+    "Cloud computing provides computing services like storage and servers over the internet."
+}
+
+# Step 2: User Input
+
+topic = input("Enter study topic: ").lower()
+
+# Step 3: Generate Response
+
+if topic in study_data:
+
+    response = study_data[topic]
+
+else:
+
+    response = "Sorry, topic not found in study database."
+
+
+# Step 4: Print Output
+
+print("\nAI Study Assistant Response:\n")
+
+print(response)
+
+Example Input:
+Enter study topic: machine learning
+
+Expected Output:
+AI Study Assistant Response:
+
+Machine Learning is a branch of AI where computers learn patterns from data and make predictions.

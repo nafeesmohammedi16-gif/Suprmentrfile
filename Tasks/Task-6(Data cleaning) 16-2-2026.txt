@@ -1,0 +1,55 @@
+
+Task:Create a dataset with columns with the some missing values and salary missing values and cities( Hyderabad), experience with some duplicates, perform remove duplicates, handle missing values, standardize city names, apply min-max scaling on age and salary, show final clean data.
+
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
+# Create dataset
+data = {
+    "Name": ["Rahul", "Aisha", "John", "Rahul", "Meena"],
+    "Age": [25, 30, None, 25, 28],
+    "Salary": [50000, None, 45000, 50000, 60000],
+    "City": ["Hyderabad", "hyderabad", "HYDERABAD", "Hyderabad", None],
+    "Experience": [2, 5, 3, 2, 4]
+}
+
+df = pd.DataFrame(data)
+
+print("Original Dataset:")
+print(df)
+
+# Remove duplicates
+df = df.drop_duplicates()
+
+# Handle missing values
+df["Age"] = df["Age"].fillna(df["Age"].mean())
+df["Salary"] = df["Salary"].fillna(df["Salary"].mean())
+df["City"] = df["City"].fillna("Hyderabad")
+
+# Standardize city names
+df["City"] = df["City"].str.lower().str.title()
+
+# Apply Min-Max Scaling
+scaler = MinMaxScaler()
+
+df[["Age", "Salary"]] = scaler.fit_transform(df[["Age", "Salary"]])
+
+print("\nFinal Clean Data:")
+print(df)
+
+Output:
+Original Dataset:
+    Name   Age   Salary        City  Experience
+0  Rahul  25.0  50000.0   Hyderabad           2
+1  Aisha  30.0      NaN   hyderabad           5
+2   John   NaN  45000.0   HYDERABAD           3
+3  Rahul  25.0  50000.0   Hyderabad           2
+4  Meena  28.0  60000.0        None           4
+
+
+Final Clean Data:
+    Name       Age  Salary       City  Experience
+0  Rahul  0.000000    0.25  Hyderabad           2
+1  Aisha  1.000000    0.50  Hyderabad           5
+2   John  0.533333    0.00  Hyderabad           3
+4  Meena  0.600000    1.00  Hyderabad           4

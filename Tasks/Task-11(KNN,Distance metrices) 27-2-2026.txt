@@ -1,0 +1,115 @@
+
+Task: from sklearn.datasets import load-brest_cancer
+   steps:
+         train knn classifier,
+         try different k values(1-15),
+         plot accuracy vs k,
+         try euclidean vs manhattan,
+compare results,explain why accuracy changes with k.
+
+# KNN Classifier on Breast Cancer Dataset
+
+# Step 1: Import libraries
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+# Step 2: Load dataset
+data = load_breast_cancer()
+
+X = data.data
+y = data.target
+
+# Step 3: Split dataset into training and testing
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Step 4: Try different K values
+k_values = range(1, 16)
+
+euclidean_acc = []
+manhattan_acc = []
+
+for k in k_values:
+
+    # Euclidean Distance
+    knn_euclidean = KNeighborsClassifier(
+        n_neighbors=k,
+        metric='euclidean'
+    )
+
+    knn_euclidean.fit(X_train, y_train)
+
+    y_pred_e = knn_euclidean.predict(X_test)
+
+    acc_e = accuracy_score(y_test, y_pred_e)
+
+    euclidean_acc.append(acc_e)
+
+    # Manhattan Distance
+    knn_manhattan = KNeighborsClassifier(
+        n_neighbors=k,
+        metric='manhattan'
+    )
+
+    knn_manhattan.fit(X_train, y_train)
+
+    y_pred_m = knn_manhattan.predict(X_test)
+
+    acc_m = accuracy_score(y_test, y_pred_m)
+
+    manhattan_acc.append(acc_m)
+
+# Step 5: Print accuracies
+print("K Value | Euclidean Accuracy | Manhattan Accuracy")
+
+for i in range(len(k_values)):
+    print(f"{k_values[i]} \t | {euclidean_acc[i]:.4f} \t\t | {manhattan_acc[i]:.4f}")
+
+# Step 6: Plot Accuracy vs K
+plt.plot(k_values, euclidean_acc, marker='o', label='Euclidean')
+
+plt.plot(k_values, manhattan_acc, marker='s', label='Manhattan')
+
+plt.xlabel("K Value")
+plt.ylabel("Accuracy")
+plt.title("Accuracy vs K Value")
+
+plt.legend()
+
+plt.grid(True)
+
+Output:
+
+Why accuracy changes with K:-
+Small K (example: K=1):
+  Model becomes very sensitive to noise.
+  Can overfit the training data.
+  Accuracy may fluctuate.
+Medium K:
+ Gives balanced prediction.
+ Usually provides better accuracy.
+ Reduces noise effect.
+Large K:
+ Considers many neighbors.
+ Model becomes too generalized.
+ Can underfit the data.
+
+Euclidean vs Manhattan Distance:-
+Euclidean Distance:
+ Measures straight-line distance.
+ Works well when data is continuous and evenly distributed.
+Manhattan Distance:
+ Measures distance by horizontal and vertical paths.
+ More robust when features vary greatly.
+
+Conclusion:
+Best K value is usually where accuracy is highest.
+Medium K values often perform better than very small or very large K.
+Euclidean and Manhattan may give slightly different accuracies because they calculate distance differently.
+
+
+ 

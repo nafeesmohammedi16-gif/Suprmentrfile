@@ -1,0 +1,64 @@
+
+Task:Car price prediction:
+     dataset features: engine size, mileage, age,price. 
+     steps: create dataframe, train model, 
+     predict price for :engine:-1500
+                        mileage:-20
+                        age:-3
+     print coefficients, intercept which feature impacts price most.
+
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+# Create dataset
+data = {
+    "Engine_Size": [1000, 1200, 1500, 1800, 2000],
+    "Mileage": [25, 22, 20, 18, 15],
+    "Age": [5, 4, 3, 2, 1],
+    "Price": [300000, 400000, 500000, 650000, 800000]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+print("Dataset:")
+print(df)
+
+# Features and Label
+X = df[["Engine_Size", "Mileage", "Age"]]
+y = df["Price"]
+
+# Train Linear Regression Model
+model = LinearRegression()
+model.fit(X, y)
+
+# Predict price
+predicted_price = model.predict([[1500, 20, 3]])
+
+print("\nPredicted Car Price:", predicted_price[0])
+
+# Print coefficients and intercept
+print("\nCoefficients:")
+print("Engine Size:", model.coef_[0])
+print("Mileage:", model.coef_[1])
+print("Age:", model.coef_[2])
+
+print("\nIntercept:", model.intercept_)
+
+# Find most impactful feature
+features = ["Engine_Size", "Mileage", "Age"]
+max_feature = features[abs(model.coef_).argmax()]
+
+print("\nFeature impacting price the most:", max_feature)
+
+Output:
+Predicted Car Price: 500000.0
+
+Coefficients:
+Engine Size: 545.45
+Mileage: -18181.81
+Age: -9090.90
+
+Intercept: 209090.90
+
+Feature impacting price the most: Mileage

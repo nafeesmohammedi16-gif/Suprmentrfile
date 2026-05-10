@@ -1,0 +1,61 @@
+
+Assignment Name: ML Idea Generator
+Aim:
+Suggest ML problems in college, healthcare, shopping and describe input → output.
+Objective:
+To suggest real-world Machine Learning (ML) problems in different domains and clearly define their Input → Output process.
+
+1.College Domain – Student Performance Prediction:
+Problem:
+Predict whether a student will pass or fail the semester.
+
+Input:
+Attendance percentage
+Internal marks
+Assignment scores
+Previous semester CGPA
+Study hours per week
+
+Output:
+Pass / Fail
+OR Predicted Final Grade (A, B, C, etc.)
+
+How ML Helps:
+Helps teachers identify weak students early and provide support.
+
+2.Healthcare Domain – Disease Risk Prediction:
+Problem:
+Predict the risk of diabetes in a patient.
+
+Input:
+Age
+BMI
+Blood sugar level
+Blood pressure
+Family history
+Physical activity level
+
+Output:
+High Risk / Medium Risk / Low Risk
+OR Probability percentage (e.g., 78% risk)
+
+How ML Helps:
+Early detection can prevent serious health complications.
+
+3.Shopping Domain – Product Recommendation System:
+Problem:
+Recommend products to customers based on their interests.
+
+Input:
+Past purchase history
+Items viewed
+Search history
+Cart items
+Ratings given
+
+Output:
+List of recommended products
+“You may also like” suggestions
+
+How ML Helps:
+Increases sales and improves customer experience.

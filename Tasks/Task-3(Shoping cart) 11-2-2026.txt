@@ -1,0 +1,21 @@
+
+Task: Shopping cart:-create a shopping cart using it and remove one item, print total items.
+
+# Create shopping cart
+cart = ["Milk", "Bread", "Eggs", "Rice"]
+
+# Add one item
+cart.append("Juice")
+
+# Remove one item
+cart.remove("Bread")
+
+# Print shopping cart
+print("Shopping Cart:", cart)
+
+# Print total items
+print("Total Items:", len(cart))
+
+Output:
+Shopping Cart: ['Milk', 'Eggs', 'Rice', 'Juice']
+Total Items: 4

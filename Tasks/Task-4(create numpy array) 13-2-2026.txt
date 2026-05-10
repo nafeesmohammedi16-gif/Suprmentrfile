@@ -1,0 +1,34 @@
+
+Task: Create numpy array with the following temperature in degree Celsius. The array is 28, 32, 30, 37, 26, 38.
+      Requirements:- 1.convert the list in to numpy array. 
+                     2.print max and min temperature and calculate average temperature and display last three days temperature.
+
+import numpy as np
+
+# Create list
+temp_list = [28, 32, 30, 37, 26, 38]
+
+# Convert list to NumPy array
+temp_array = np.array(temp_list)
+
+# Print NumPy array
+print("Temperature Array:", temp_array)
+
+# Print maximum temperature
+print("Maximum Temperature:", np.max(temp_array))
+
+# Print minimum temperature
+print("Minimum Temperature:", np.min(temp_array))
+
+# Calculate and print average temperature
+print("Average Temperature:", np.mean(temp_array))
+
+# Display last three days temperature
+print("Last Three Days Temperature:", temp_array[-3:])
+
+Output:
+Temperature Array: [28 32 30 37 26 38]
+Maximum Temperature: 38
+Minimum Temperature: 26
+Average Temperature: 31.833333333333332
+Last Three Days Temperature: [37 26 38]

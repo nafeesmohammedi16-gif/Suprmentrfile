@@ -1,0 +1,33 @@
+
+Assignment Name: Detection Brainstorm
+Aim:
+List 5 uses of face/object detection and design one solution.
+
+5 Uses of Face/Object Detection:
+
+1.Security & Surveillance:-
+Used in CCTV cameras to detect suspicious people or activities.
+2.Face Unlock in Smartphones:-
+Helps unlock phones by recognizing the user’s face.
+3.Attendance Systems:-
+Automatically marks attendance in schools or offices using face detection.
+4.Self-Driving Cars:-
+Detects pedestrians, vehicles, traffic signs, and obstacles.
+5.Medical Imaging:-
+Detects diseases like tumors in X-rays or scans.
+
+Designed Solution:
+
+Title: Smart Classroom Attendance System
+
+Problem:
+Manual attendance takes time and can be inaccurate.
+
+Solution:
+A face detection system installed in the classroom camera automatically identifies students and marks their attendance.
+
+How it Works:
+Camera captures student faces
+System compares faces with stored database
+Marks attendance automatically
+Generates daily attendance report

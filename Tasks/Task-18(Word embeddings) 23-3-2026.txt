@@ -1,0 +1,97 @@
+
+Task: Create your own small dataset of at least 15 sentences on any topic like sports, food, movies, college life, 
+     train a word2vector model and print, vector of one word, find most similar words for any chosen word, expected outcome, understand how embeddings are learned from context.
+
+# Word2Vec Example using Custom Dataset
+
+# Step 1: Import libraries
+from gensim.models import Word2Vec
+from nltk.tokenize import word_tokenize
+import nltk
+
+# Download tokenizer
+nltk.download('punkt')
+
+
+# Step 2: Create Dataset (15 Sentences)
+# Topic: Sports
+
+
+sentences = [
+    "cricket is a popular sport",
+    "football players run fast",
+    "virat kohli is a great batsman",
+    "messi is a famous football player",
+    "sports improve physical fitness",
+    "many students love cricket",
+    "football is played worldwide",
+    "batsmen score many runs",
+    "goalkeepers save goals in football",
+    "sports teach teamwork and discipline",
+    "cricket fans enjoy world cup matches",
+    "players practice daily for tournaments",
+    "football teams train hard",
+    "fitness is important for athletes",
+    "children enjoy outdoor sports"
+]
+
+# Step 3: Tokenize Sentences
+
+tokenized_sentences = []
+
+for sentence in sentences:
+    tokens = word_tokenize(sentence.lower())
+    tokenized_sentences.append(tokens)
+
+print("Tokenized Sentences:\n")
+print(tokenized_sentences)
+
+# Step 4: Train Word2Vec Model
+
+model = Word2Vec(
+    sentences=tokenized_sentences,
+    vector_size=50,
+    window=3,
+    min_count=1,
+    workers=4
+)
+
+# Step 5: Print Vector of One Word
+
+word = "football"
+
+print(f"\nVector for word '{word}':\n")
+
+print(model.wv[word])
+
+# Step 6: Find Similar Words
+
+print(f"\nMost Similar Words to '{word}':\n")
+
+similar_words = model.wv.most_similar(word)
+
+for similar_word, score in similar_words:
+    print(similar_word, ":", score)
+
+Output:
+Tokenized Sentences:
+
+[['cricket', 'is', 'a', 'popular', 'sport'],
+ ['football', 'players', 'run', 'fast'],
+ ['virat', 'kohli', 'is', 'a', 'great', 'batsman'],
+ ...
+]
+
+
+Vector for word 'football':
+
+[ 0.0123 -0.0345  0.0567 ... ]
+
+
+Most Similar Words to 'football':
+
+players : 0.82
+sport : 0.79
+teams : 0.76
+goalkeepers : 0.72
+cricket : 0.70

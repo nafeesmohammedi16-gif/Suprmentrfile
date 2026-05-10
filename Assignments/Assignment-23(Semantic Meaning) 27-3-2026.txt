@@ -1,0 +1,21 @@
+
+Assignment Name: Semantic Meaning
+Aim:
+Find 5 word pairs and explain semantic similarity.
+Objective:
+To understand semantic similarity by identifying and analyzing word pairs with similar meanings.
+
+1. Car – Automobile:
+These two words have almost identical meanings. Both refer to a vehicle used for transportation. This is an example of synonyms (high semantic similarity).
+
+2. Teacher – Instructor:
+Both words describe a person who teaches others. While “teacher” is more common in schools and “instructor” is used in formal or specific training, their meanings are very similar.
+
+3. Happy – Joyful:
+These words express positive emotions. “Joyful” is a stronger form of “happy,” but both represent a similar feeling of happiness.
+
+4. Big – Large:
+Both words describe size. They are used to indicate something of great size, making them semantically similar.
+
+5. Fast – Quick:
+These words describe speed. Both indicate something happening in a short amount of time, so they are closely related in meaning.

@@ -1,0 +1,74 @@
+
+Assignment Name : Customer Segmentation
+Aim: 
+Perform K-Means clustering on a mall dataset and describe customer groups.
+Objective:
+To perform customer segmentation using the K-Means clustering algorithm on a mall dataset and identify different customer groups based on their behavior.
+Algorithm:
+Import required libraries (NumPy, Pandas, Matplotlib, Sklearn).
+Load the dataset (Mall Customer Dataset).
+Select relevant features (e.g., Annual Income and Spending Score).
+Handle missing values if any.
+Use the Elbow Method to find the optimal number of clusters (K).
+Apply K-Means clustering with the chosen K value.
+Assign cluster labels to each customer.
+Visualize the clusters using a scatter plot.
+Analyze and describe each customer group.
+
+Python Program:
+
+# Import libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Load dataset
+data = pd.read_csv("Mall_Customers.csv")
+
+# Select features
+X = data[['Annual Income (k$)', 'Spending Score (1-100)']]
+
+# Elbow Method to find optimal K
+wcss = []
+for i in range(1, 11):
+    kmeans = KMeans(n_clusters=i, random_state=0)
+    kmeans.fit(X)
+    wcss.append(kmeans.inertia_)
+
+# Plot Elbow Graph
+plt.plot(range(1, 11), wcss)
+plt.title('Elbow Method')
+plt.xlabel('Number of clusters')
+plt.ylabel('WCSS')
+plt.show()
+
+# Apply K-Means (assume K=5)
+kmeans = KMeans(n_clusters=5, random_state=0)
+y_kmeans = kmeans.fit_predict(X)
+
+# Visualizing clusters
+plt.scatter(X.iloc[:, 0], X.iloc[:, 1], c=y_kmeans)
+plt.xlabel('Annual Income')
+plt.ylabel('Spending Score')
+plt.title('Customer Segments')
+plt.show()
+
+Sample Output (Clusters):
+Cluster 1: High income, high spending
+Cluster 2: High income, low spending
+Cluster 3: Medium income, medium spending
+Cluster 4: Low income, high spending
+Cluster 5: Low income, low spending
+
+Customer Group Description:
+High Income – High Spending
+→ Premium customers, target for luxury products
+High Income – Low Spending
+→ Potential customers, need marketing strategies
+Medium Income – Medium Spending
+→ Average customers, stable revenue group
+Low Income – High Spending
+→ Impulsive buyers, focus on offers/discounts
+Low Income – Low Spending
+→ Least priority customers

@@ -1,0 +1,118 @@
+
+Task:Build a loan approval prediction model: create datasets, train the model, prediction, accuracy, for new customers, target, and features.
+
+# Loan Approval Prediction Model
+
+# Step 1: Import libraries
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# Step 2: Create dataset
+
+data = {
+    'income': [25000, 40000, 50000, 60000, 70000,
+               80000, 30000, 90000, 55000, 45000],
+
+    'credit_score': [550, 620, 680, 720, 750,
+                     800, 580, 820, 700, 640],
+
+    'age': [22, 25, 30, 35, 40,
+            45, 24, 50, 32, 28],
+
+    'loan_amount': [100000, 150000, 180000, 220000, 250000,
+                    300000, 120000, 350000, 200000, 160000],
+
+    'employment_years': [1, 2, 4, 5, 7,
+                         10, 1, 12, 3, 2],
+
+    'loan_approved': [0, 0, 1, 1, 1,
+                      1, 0, 1, 1, 0]
+}
+
+# Step 3: Create DataFrame
+
+df = pd.DataFrame(data)
+
+print("Dataset:\n")
+print(df)
+
+# Step 4: Features and Target
+
+X = df[['income',
+        'credit_score',
+        'age',
+        'loan_amount',
+        'employment_years']]
+
+y = df['loan_approved']
+
+print("\nFeatures:\n")
+print(X)
+
+print("\nTarget:\n")
+print(y)
+
+# Step 5: Split dataset
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.2,
+    random_state=42
+)
+
+# Step 6: Train model
+
+model = LogisticRegression()
+
+model.fit(X_train, y_train)
+
+# Step 7: Predict on test data
+
+y_pred = model.predict(X_test)
+
+# Step 8: Accuracy
+
+accuracy = accuracy_score(y_test, y_pred)
+
+print("\nAccuracy:", accuracy)
+
+# Step 9: Prediction for new customer
+
+new_customer = [[65000, 720, 33, 200000, 5]]
+
+prediction = model.predict(new_customer)
+
+print("\nNew Customer Data:")
+print(new_customer)
+
+if prediction[0] == 1:
+    print("Loan Approved")
+else:
+    print("Loan Not Approved")
+
+Output:
+Dataset:
+
+   income  credit_score  age  loan_amount  employment_years  loan_approved
+0   25000           550   22       100000                 1              0
+1   40000           620   25       150000                 2              0
+2   50000           680   30       180000                 4              1
+3   60000           720   35       220000                 5              1
+4   70000           750   40       250000                 7              1
+5   80000           800   45       300000                10              1
+6   30000           580   24       120000                 1              0
+7   90000           820   50       350000                12              1
+8   55000           700   32       200000                 3              1
+9   45000           640   28       160000                 2              0
+
+
+Accuracy: 1.0
+
+
+New Customer Data:
+[[65000, 720, 33, 200000, 5]]
+
+Loan Approved

@@ -1,0 +1,53 @@
+
+Assignment Name: Smart Input Program
+Aim:
+Build a Python program that takes name, age, hobby and prints a personalized message while categorizing age using conditionals.
+Objective:
+To develop a Python program that accepts user inputs such as name, age, and hobby, categorizes the age using conditional statements, and displays a personalized 
+message.
+Algorithm:
+Start the program
+Read the name from the user
+Read the age from the user
+Read the hobby from the user
+Check the age category using conditional statements
+If age < 13 → Child
+If age ≥ 13 and age < 20 → Teenager
+If age ≥ 20 and age < 60 → Adult
+Else → Senior Citizen
+Display a personalized message
+Stop the program
+Python Program:
+
+# Smart Input Program
+
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+hobby = input("Enter your hobby: ")
+
+if age < 13:
+    category = "Child"
+elif age < 20:
+    category = "Teenager"
+elif age < 60:
+    category = "Adult"
+else:
+    category = "Senior Citizen"
+
+print("\n--- Personalized Message ---")
+print("Hello", name)
+print("Age:", age)
+print("Category:", category)
+print("Hobby:", hobby)
+
+Output:
+
+Enter your name: Riya
+Enter your age: 20
+Enter your hobby: Reading
+
+--- Personalized Message ---:
+Hello Riya
+Age: 20
+Category: Adult
+Hobby:Reading

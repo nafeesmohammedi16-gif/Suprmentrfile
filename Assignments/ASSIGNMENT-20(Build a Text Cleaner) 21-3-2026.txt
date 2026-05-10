@@ -1,0 +1,47 @@
+
+Assignment Name : Build a Text Cleaner
+Aim:
+Write code to remove punctuation, lowercase text, remove stopwords and test it.
+Objective:
+To develop a Python program that can clean textual data by performing the following operations:
+Remove punctuation from text.
+Convert all text to lowercase.
+Remove common stopwords from the text.
+Test the program with sample input.
+
+Python  Program:
+
+# Importing required libraries
+import string
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+import nltk
+
+# Download stopwords if not already done
+nltk.download('punkt')
+nltk.download('stopwords')
+
+# Sample text
+text = "Hello! This is an example sentence, showing off the stopwords removal."
+
+# 1. Convert text to lowercase
+text = text.lower()
+
+# 2. Remove punctuation
+text = text.translate(str.maketrans('', '', string.punctuation))
+
+# 3. Tokenize the text
+words = word_tokenize(text)
+
+# 4. Remove stopwords
+stop_words = set(stopwords.words('english'))
+filtered_words = [word for word in words if word not in stop_words]
+
+# Final cleaned text
+cleaned_text = ' '.join(filtered_words)
+print("Original Text:", text)
+print("Cleaned Text:", cleaned_text)
+
+Output / Result:
+Original Text: hello this is an example sentence showing off the stopwords removal
+Cleaned Text: hello example sentence showing stopwords removal

@@ -1,0 +1,154 @@
+
+Task:movie Review Classifier, 
+     build a model, data set:20+ sentences, classes: positive, negative, neutral. Bonus: Use TFIDF ,instead of CountVectorizer.
+
+# Movie Review Classifier using TF-IDF
+
+# Step 1: Import libraries
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, classification_report
+
+# ---------------------------------------------------
+# Step 2: Create Dataset (20+ Sentences)
+# ---------------------------------------------------
+
+reviews = [
+
+    # Positive Reviews
+    "I loved this movie",
+    "Amazing acting and great story",
+    "Fantastic film with emotional scenes",
+    "The movie was wonderful",
+    "Excellent direction and music",
+    "Brilliant performance by actors",
+    "This film was inspiring",
+    "One of the best movies ever",
+    
+    # Negative Reviews
+    "I hated this movie",
+    "Worst film I have seen",
+    "Terrible acting and boring story",
+    "The movie was very bad",
+    "Waste of time",
+    "Poor screenplay and direction",
+    "The film was disappointing",
+    "Awful experience watching this movie",
+    
+    # Neutral Reviews
+    "The movie was okay",
+    "It was an average film",
+    "Nothing special about the movie",
+    "The acting was fine",
+    "Some scenes were good and some were bad",
+    "The movie was neither good nor bad"
+]
+
+sentiments = [
+
+    # Positive
+    "positive", "positive", "positive", "positive",
+    "positive", "positive", "positive", "positive",
+
+    # Negative
+    "negative", "negative", "negative", "negative",
+    "negative", "negative", "negative", "negative",
+
+    # Neutral
+    "neutral", "neutral", "neutral", "neutral",
+    "neutral", "neutral"
+]
+
+# Step 3: Create DataFrame
+
+df = pd.DataFrame({
+    'Review': reviews,
+    'Sentiment': sentiments
+})
+
+print("Dataset:\n")
+print(df)
+
+# Step 4: Features and Target
+
+X = df['Review']
+y = df['Sentiment']
+
+# Step 5: Split Dataset
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.2,
+    random_state=42
+)
+# Step 6: TF-IDF Vectorization
+
+tfidf = TfidfVectorizer()
+
+X_train_tfidf = tfidf.fit_transform(X_train)
+
+X_test_tfidf = tfidf.transform(X_test)
+
+# Step 7: Train Model
+
+model = MultinomialNB()
+
+model.fit(X_train_tfidf, y_train)
+
+# Step 8: Prediction
+
+y_pred = model.predict(X_test_tfidf)
+
+# ---------------------------------------------------
+# Step 9: Accuracy
+# ---------------------------------------------------
+
+accuracy = accuracy_score(y_test, y_pred)
+
+print("\nAccuracy:", accuracy)
+
+# ---------------------------------------------------
+# Step 10: Classification Report
+# ---------------------------------------------------
+
+print("\nClassification Report:\n")
+print(classification_report(y_test, y_pred))
+
+# Step 11: Predict New Review
+
+
+new_review = ["The movie had excellent acting"]
+
+new_review_tfidf = tfidf.transform(new_review)
+
+prediction = model.predict(new_review_tfidf)
+
+print("\nNew Review:")
+print(new_review[0])
+
+print("Predicted Sentiment:", prediction[0])
+
+Output:
+Accuracy: 0.80
+
+
+Classification Report:
+
+              precision    recall  f1-score   support
+
+    negative       1.00      1.00      1.00         2
+     neutral       0.50      1.00      0.67         1
+    positive       1.00      0.50      0.67         2
+
+    accuracy                           0.80         5
+   macro avg       0.83      0.83      0.78         5
+weighted avg       0.90      0.80      0.80         5
+
+
+New Review:
+The movie had excellent acting
+
+Predicted Sentiment: positive

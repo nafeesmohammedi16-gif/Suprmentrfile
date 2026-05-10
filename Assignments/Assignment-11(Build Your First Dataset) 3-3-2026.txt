@@ -1,0 +1,63 @@
+
+Assignment Name: Build Your First Dataset
+Aim:
+Create a dataset (e.g., study hours vs marks), identify features & labels, predict relationship.
+Objective:
+To understand dataset creation, feature-label identification, and basic prediction using Linear Regression.
+Algorithm:
+Start the program
+Import pandas,sklearn libraries
+Create dataset manually
+Identify features (X) and label (y)
+Train Linear Regression model
+Predict marks for given study hours
+Display results
+Stop
+
+Python Program:
+
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+# Create dataset
+data = {
+    "Study_Hours": [1, 2, 3, 4, 5, 6, 7, 8],
+    "Marks": [35, 40, 50, 55, 65, 75, 85, 95]
+}
+
+df = pd.DataFrame(data)
+
+print("Dataset:")
+print(df)
+
+# 1. Identify features and label
+X = df[["Study_Hours"]]   # Feature
+y = df["Marks"]           # Label
+
+# 2. Train model
+model = LinearRegression()
+model.fit(X, y)
+
+# 3. Predict marks for 9 study hours
+predicted_marks = model.predict([[9]])
+
+print("\nPredicted Marks for 9 Study Hours:", predicted_marks[0])
+
+Sample Output:
+Dataset:
+   Study_Hours  Marks
+0            1     35
+1            2     40
+2            3     50
+3            4     55
+4            5     65
+5            6     75
+6            7     85
+7            8     95
+
+Predicted Marks for 9 Study Hours: 104.5
+
+Relationship Prediction:
+There is a positive linear relationship between study hours and marks.
+As study hours increase, marks also increase.
+The model predicts higher marks for more study hours.

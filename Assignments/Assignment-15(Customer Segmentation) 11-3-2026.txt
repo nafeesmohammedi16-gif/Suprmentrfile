@@ -1,0 +1,49 @@
+
+Assignment Name: Customer Segmentation
+Aim:
+Perform K-Means clustering on a mall dataset and describe customer groups.
+Objective:
+To apply the K-Means clustering algorithm on a mall customer dataset in order to group customers based on their characteristics and identify different customer segments.
+Algorithm:
+Import required libraries (NumPy, Pandas, Matplotlib, Scikit-learn).
+Load the mall customer dataset.
+Select important features such as Annual Income and Spending Score.
+Apply the K-Means clustering algorithm with a chosen number of clusters.
+Fit the model to the dataset.
+Predict cluster labels for each customer.
+Plot the clusters using a scatter plot for visualization.
+Analyze and describe the customer groups.
+
+Python Program:
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Load dataset
+data = pd.read_csv("Mall_Customers.csv")
+
+# Select features
+X = data[['Annual Income (k$)', 'Spending Score (1-100)']]
+
+# Apply K-Means
+kmeans = KMeans(n_clusters=5, random_state=0)
+data['Cluster'] = kmeans.fit_predict(X)
+
+# Plot clusters
+plt.scatter(X['Annual Income (k$)'], X['Spending Score (1-100)'], c=data['Cluster'])
+plt.xlabel("Annual Income")
+plt.ylabel("Spending Score")
+plt.title("Customer Segmentation using K-Means")
+plt.show()
+
+Sample Output:
+
+The scatter plot displays customers divided into 5 clusters based on income and spending score.
+Example clusters:
+
+High Income – High Spending → Premium customers.
+High Income – Low Spending → Potential customers to target.
+Low Income – High Spending → Budget shoppers with high engagement.
+Low Income – Low Spending → Least profitable customers.
+Average Income – Average Spending → Regular customers.

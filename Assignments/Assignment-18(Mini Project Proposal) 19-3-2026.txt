@@ -1,0 +1,46 @@
+
+Assignment Name : Mini Project Proposal
+Aim: 
+Submit a 1-page proposal with problem, dataset, algorithm, expected output.
+Mini Project Proposal:
+Title: Customer Segmentation using K-Means Clustering
+
+1.Problem Statement:
+In shopping malls or retail businesses, customers have different spending behaviors. It is difficult for businesses to target all customers effectively.
+The problem is to group customers into different segments based on their characteristics so that businesses can understand and target them better.
+
+2.Dataset:
+Dataset Name: Mall Customer Dataset
+Attributes:
+ Customer ID
+ Gender
+ Age
+ Annual Income (k$)
+ Spending Score (1–100)
+Source: Public dataset (Kaggle or similar)
+
+3.Algorithm Used:
+K-Means Clustering Algorithm
+It is an unsupervised machine learning algorithm.
+It groups data into K clusters based on similarity.
+Steps:
+Choose number of clusters (K)
+Assign data points to nearest cluster center
+Update cluster centers
+Repeat until convergence
+
+4.Methodology:
+Import dataset
+Perform data preprocessing
+Select features (Income & Spending Score)
+Apply K-Means clustering
+Visualize clusters using graphs
+
+5. Expected Output:
+Customers divided into groups such as:
+ High income – High spending
+ High income – Low spending
+ Low income – High spending
+ Low income – Low spending
+Graphical visualization of clusters
+Insights to help businesses in marketing strategies

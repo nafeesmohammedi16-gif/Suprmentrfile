@@ -1,0 +1,98 @@
+
+Task: You are given a CSV file containing Name, Maths, Science, English, Department. 
+     Requirement:- Read a CSV file, add new column ,Total, add a column Average, find top 3 students based on total department-wise average marks, students scoring above 75 in all subjects, and missing values if any.
+
+import pandas as pd
+
+# Read CSV file
+df = pd.read_csv("students.csv")
+
+# Display original data
+print("Original Data:")
+print(df)
+
+# Check and fill missing values
+df = df.fillna(0)
+
+# Add Total column
+df["Total"] = df["Maths"] + df["Science"] + df["English"]
+
+# Add Average column
+df["Average"] = df["Total"] / 3
+
+# Top 3 students based on Total marks
+top3 = df.sort_values(by="Total", ascending=False).head(3)
+
+print("\nTop 3 Students:")
+print(top3[["Name", "Total"]])
+
+# Department-wise average marks
+dept_avg = df.groupby("Department")[["Maths", "Science", "English"]].mean()
+
+print("\nDepartment-wise Average Marks:")
+print(dept_avg)
+
+# Students scoring above 75 in all subjects
+above75 = df[
+    (df["Maths"] > 75) &
+    (df["Science"] > 75) &
+    (df["English"] > 75)
+]
+
+print("\nStudents Scoring Above 75 in All Subjects:")
+print(above75[["Name", "Maths", "Science", "English"]])
+
+# Display missing values count
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+CSV file:
+Name,Maths,Science,English,Department
+Rahul,85,78,90,CSE
+Aisha,92,88,95,ISE
+John,70,65,72,EEE
+Meena,80,82,84,CSE
+Arun,76,79,81,ISE
+
+Output:
+Original Data:
+    Name  Maths  Science  English Department
+0  Rahul     85       78       90        CSE
+1  Aisha     92       88       95        ISE
+2   John     70       65       72        EEE
+3  Meena     80       82       84        CSE
+4   Arun     76       79       81        ISE
+
+
+Top 3 Students:
+    Name  Total
+1  Aisha    275
+0  Rahul    253
+3  Meena    246
+
+
+Department-wise Average Marks:
+            Maths  Science  English
+Department                          
+CSE          82.5     80.0     87.0
+EEE          70.0     65.0     72.0
+ISE          84.0     83.5     88.0
+
+
+Students Scoring Above 75 in All Subjects:
+    Name  Maths  Science  English
+0  Rahul     85       78       90
+1  Aisha     92       88       95
+3  Meena     80       82       84
+4   Arun     76       79       81
+
+
+Missing Values:
+Name          0
+Maths         0
+Science       0
+English       0
+Department    0
+Total         0
+Average       0
+dtype: int64
